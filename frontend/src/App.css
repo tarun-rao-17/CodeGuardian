@@ -1,0 +1,486 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+main .left, main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+main .left {
+  background-color: #000000;
+  position: relative;
+}
+
+.left .code {
+  height: calc(100% - 60px);
+  width: 100%;
+  margin: 0;
+  border-radius: 0.7rem;
+  background-color: #0c0c0c;
+  overflow: hidden;
+}
+
+.code pre, .code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: #0c0c0c;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.code ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.code ::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+
+.code ::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.code ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.language-selector label {
+  margin-right: 10px;
+  color: #ddd;
+  font-weight: 500;
+}
+
+#language-select {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  min-width: 150px;
+}
+
+#language-select:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+}
+
+#language-select option {
+  background-color: #2a2a2a;
+}
+
+main .right {
+  background-color: #343434;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  overflow: auto;
+}
+
+.editor-header {
+  padding: 8px;
+  background-color: #222;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: #eee;
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  min-height: 40px;
+  height: 100px;
+}
+
+.logout-button:hover {
+  background-color: #ff4444;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.5);
+}
+
+.logout-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 4px rgba(255, 68, 68, 0.5);
+}
+
+.button-container {
+  position: absolute;
+  bottom: 150px;
+  right: 15px;
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+}
+
+.review, .run {
+  padding: 3px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 110px;
+  margin-bottom: -23px;
+}
+
+.review {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.review:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.run {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+}
+
+.run:hover {
+  background-color: #1e88e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.review:active, .run:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.button-icon {
+  font-size: 16px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #444;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+  color: #ddd;
+}
+
+.tabs button.active {
+  border-bottom: 3px solid #2196F3;
+  font-weight: bold;
+}
+
+.tabs button:hover {
+  background-color: #444;
+}
+
+.content {
+  padding: 15px;
+  height: calc(100% - 45px);
+  overflow: auto;
+}
+
+.output-content pre {
+  font-family: 'Fira Code', monospace;
+  background-color: #1e1e1e;
+  color: #f8f8f8;
+  padding: 15px;
+  border-radius: 5px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.review-content {
+  color: #f8f8f8;
+  line-height: 1.5;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+.chatbot {
+  position: absolute;
+  bottom: 60px;
+  right: 15px;
+  z-index: 10;
+}
+
+.chat-toggle {
+  padding: 8px 15px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-toggle:hover {
+  background-color: #e68900;
+  transform: translateY(-2px);
+}
+
+.chat-toggle:active {
+  transform: translateY(1px);
+}
+
+.chat-container {
+  margin-top: 10px;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chat-input {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 5px;
+  resize: none;
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 10px;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.chat-submit {
+  padding: 8px 15px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.chat-submit:hover:not(:disabled) {
+  background-color: #0b7dda;
+  transform: translateY(-2px);
+}
+
+.chat-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-submit:active {
+  transform: translateY(1px);
+}
+
+.chat-response {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+  color: #f8f8f8;
+  font-family: 'Fira Code', monospace;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+.predefined-questions {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+}
+
+.predefined-questions h4 {
+  color: #ddd;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.predefined-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.predefined-btn:hover:not(:disabled) {
+  background-color: #555;
+  transform: translateY(-1px);
+}
+
+.predefined-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* New styles for code block with copy button */
+.code-block-container {
+  position: relative;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #333;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid #444;
+}
+
+.code-block-language {
+  color: #ddd;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.copy-button {
+  padding: 5px 10px;
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: #777;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
+
+.code-block-pre {
+  margin: 0;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow-x: auto;
+}
+
+.code-block-pre code {
+  font-family: 'Fira Code', monospace;
+  color: #f8f8f8;
+  line-height: 1.5;
+}
