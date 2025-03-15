@@ -92,8 +92,7 @@ Your role is to:
 1. Answer specific coding questions clearly and concisely
 2. Explain code issues in detail with examples
 3. Provide personalized guidance based on the user's code and query
-
-5. Use a friendly, supportive tone
+4. Use a friendly, supportive tone
 
 User Query: ${prompt}
 

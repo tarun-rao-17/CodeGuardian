@@ -24,10 +24,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; /* Kept to ensure it fills viewport initially */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  /* Removed display: flex and place-items: center to allow natural flow */
 }
 
 h1 {

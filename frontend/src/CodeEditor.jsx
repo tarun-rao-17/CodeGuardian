@@ -16,7 +16,9 @@ function CodeEditor() {
 
   return (
     <>
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
       {/* Rest of your CodeEditor component */}
     </>
   );
